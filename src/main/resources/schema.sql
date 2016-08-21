@@ -1,0 +1,6 @@
+DROP TABLE product IF EXISTS;
+
+CREATE TABLE product (
+  id        BIGINT IDENTITY PRIMARY KEY,
+  name VARCHAR(30),
+);
