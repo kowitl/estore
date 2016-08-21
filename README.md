@@ -1,6 +1,8 @@
 # estore
 Springboot and ReactJS Example
 
+<img src="http://i599.photobucket.com/albums/tt73/kowit_x2/Screenshot%202016-08-21%2020.13.22.png"/>
+
 In the project directory, run following command
 ~~~~ 
 npm update
