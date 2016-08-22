@@ -38,6 +38,19 @@ var ProductTable = React.createClass({
       return _this2.refeshComponentState();
     });
   },
+  onClearAll: function onClearAll() {
+    var _this3 = this;
+
+    var allReqs = [];
+    this.state.prods.forEach(function (v) {
+      allReqs.push(axios.delete('/api/product/' + v.id));
+    });
+
+    axios.all(allReqs).then(function () {
+      _this3.state.prods = [];
+      _this3.refeshComponentState();
+    });
+  },
   render: function render() {
     return React.createElement(
       'div',
@@ -111,6 +124,11 @@ var ProductTable = React.createClass({
               Button,
               { type: 'button', onClick: this.onclickAdd },
               'Add'
+            ),
+            React.createElement(
+              Button,
+              { type: 'button', onClick: this.onClearAll },
+              'Clear All'
             )
           )
         )

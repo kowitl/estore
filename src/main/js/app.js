@@ -30,6 +30,17 @@ var ProductTable = React.createClass({
           })
           .then(()=>this.refeshComponentState());
      },
+     onClearAll: function(){
+        var allReqs = [];
+        this.state.prods.forEach(v => {
+            allReqs.push(axios.delete('/api/product/'+v.id));
+        });
+
+        axios.all(allReqs).then(()=>{
+            this.state.prods = [];
+            this.refeshComponentState();
+        });
+     },
      render: function() {
         return(
             <div>
@@ -66,6 +77,9 @@ var ProductTable = React.createClass({
                         <Button type="button" onClick={this.onclickAdd}>
                           Add
                         </Button>
+                        <Button type="button" onClick={this.onClearAll}>
+                           Clear All
+                         </Button>
                       </Col>
                     </FormGroup>
                </Form>
